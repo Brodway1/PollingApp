@@ -15,7 +15,7 @@ const NewPoll = () => {
   };
   console.log(answers);
   return (
-    <form>
+    <form method="POST" action="/createpoll">
       <input type="text" name="question" placeholder="Type your question" />
       <hr />
       {answers.map((answer, index) => (
@@ -25,10 +25,11 @@ const NewPoll = () => {
           onChange={HandleAnswer}
           key={index}
           id={String(index)}
+          name="answers"
           value={answer}
         />
       ))}
-    <button disabled={answers.length < 3 ? true : false} className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`}>Create</button>
+    <button type="submit" disabled={answers.length < 3 ? true : false} className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`}>Create</button>
     </form>
   );
 };
